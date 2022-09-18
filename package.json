@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run -b chrome -s ./cypress/e2e/gocity.cy.js --headless",
+    "test-firefox": "npx cypress run -b firefox -s ./cypress/e2e/gocity.cy.js --headless"
   },
   "keywords": [],
   "author": "",

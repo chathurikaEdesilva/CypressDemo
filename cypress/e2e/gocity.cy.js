@@ -1,3 +1,6 @@
+//This is the test class that uses the pages.
+//The tests are written to be indepedently run
+
 import { AllInclusivePage } from "./pages/all_inclusive_page"
 import { PricingPage } from "./pages/pricing_page"
 import { ReviewOrderPage } from "./pages/review_order_page"
@@ -12,7 +15,7 @@ const homePage = new HomePage()
 const expPage = new ExpPassPage()
 
 
-describe('Test all inclusive', () => {
+describe('All inclusive package related tests', () => {
 
     beforeEach(() => {
         cy.visit('https://gocity.com/boston/en-us/products/all-inclusive')
@@ -70,11 +73,10 @@ describe('Test all inclusive', () => {
 
 })
 
-describe.only('Test explorer pass', () => {
+describe('Explorer pass related tests', () => {
     beforeEach(() => {
         cy.visit('https://gocity.com/boston/en-us')
         Cypress.on('uncaught:exception', (err, runnable) => {
-
             return false
         });
     })
@@ -85,9 +87,9 @@ describe.only('Test explorer pass', () => {
 
     })
 
-    it.only('Click on all links in explorer page', () => {
+    it('Click on all links in explorer page', () => {
         homePage.clickExclusivePassLink()
-        cy.get('.read-more-button > .lc-font__regular').click()
+        expPage.clickReadMoreLink()
         cy.wait(5000)
         expPage.getExpItemList()
             .its('length')
@@ -100,7 +102,23 @@ describe.only('Test explorer pass', () => {
             })
     })
 
+    it('Add explorer pass to cart', () => {
+        homePage.clickExclusivePassLink()
+        expPage.clickAddAdult()
+        cy.wait(2000)
+        expPage.getCartIcon().should('be.visible')
+    })
+
+    it('Go to cart and remove item', () => {
+        homePage.clickExclusivePassLink()
+        expPage.clickAddAdult()
+        cy.wait(2000)
+        expPage.clickCartIcon()
+        expPage.deleteItemFromCart()
+        cy.wait(2000)
+        expPage.getCartIcon().should('not.exist')
+        
+    })
 
 })
 
-require('cypress-xpath')

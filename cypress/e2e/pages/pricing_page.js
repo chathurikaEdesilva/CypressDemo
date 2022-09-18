@@ -1,3 +1,4 @@
+//This class contains page objects for the Pricing page
 export class PricingPage {
 
     elements = {

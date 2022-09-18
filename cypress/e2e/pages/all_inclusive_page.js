@@ -1,3 +1,4 @@
+//This class contains the page objects for the All Inclusive page
 export class AllInclusivePage{
 
     elements ={
