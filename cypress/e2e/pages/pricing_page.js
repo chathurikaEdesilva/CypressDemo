@@ -13,6 +13,10 @@ export class PricingPage {
         this.elements.checkout_one_day_pass().click()
     }
 
+    getCheckOutButton(){
+        return this.elements.checkout_one_day_pass()
+    }
+
 }
 
 require('cypress-xpath')
