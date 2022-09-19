@@ -1,4 +1,14 @@
-//This page object class has objects that is in the Explorer Pass page
+/* This page contains objects for Explorer Pass Page
+Please note that the objects only needed for this demonstration is present here
+--Methods available
+---getExplorerPassTitle() - Will return the page title object
+---getExpItemList() - will return the item list in the explorer page
+---clickXItemInList(value) - will click on the given item based on the value passed as the argument
+---clickReadMoreLink() - will click on read more link
+---clickAddAdult() - will add one adult to the explorer pass
+---getCartIcon() - will return the cart item object
+---deleteItemFromCart() - will delete the added item from cart
+*/
 export class ExpPassPage{
 
     elements = {

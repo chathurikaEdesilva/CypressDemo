@@ -1,4 +1,10 @@
-//This class contains the page objects for the All Inclusive page
+/*This class contains the objects for the All Inclusive Page
+Please note that the objects only needed for this demonstration is present here
+--Methods available
+---goToHomePage() - will direct the user to home page from all inclusive page
+---clickBuyButton() - will click on the buy button on all inclusive page
+---selectOneDayPass() - will select a one day pass
+ */
 export class AllInclusivePage{
 
     elements ={

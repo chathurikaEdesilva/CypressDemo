@@ -16,22 +16,31 @@ The demo project automates the below-given scenarios for the [gocity.com](https:
 ### Technologies used
 - Cypress (10.8.0)
 - Cypress xpath (2.0.1)
-- Node (16.17.0)
+- Node.js (16.17.0)
 - Javascript
+- Cypress Mochawesome Reporter
 
-### Browsers tested on
+### Tested on
+
+#### Browsers
 - Chrome 105
 - Firefox 104
+
+#### Devices
 - Windows 10
 
 ### Pre-requisites to run the test
-- Node should be installed on the device
+- Node.js should be installed on the device
 
 ### Steps to run
-1. Open a terminal and run below
+1. Open a terminal and run below command
 > npm i
-2. After the setup is done, run below to execute tests in chrome (default configured test)
+2. After the setup is complete, run below command to execute tests in Chrome (default configured test)
 > npm test
 
-If this needs to be run in firefox issue the below command
+For testing in Firefox, please use the below command
 > npm run test-firefox
+
+### View the report
+After the test are completed, navigate to the below location and open mochawesome.html in any of the browsers
+> location : cypress/report/mochawesome-report

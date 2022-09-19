@@ -1,4 +1,10 @@
-//This class contains page objects for the Pricing page
+/* This page contains the page objects for the Pricing Page
+Please note that the objects only needed for this demonstration is present here
+--Methods included
+---selectOneDayPass() - will select a one day pass from the options
+---checkOutOneDayPass() - will checkout the selected pass
+---getCheckOutButton() - will return the checkout button object
+*/
 export class PricingPage {
 
     elements = {

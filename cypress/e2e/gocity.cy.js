@@ -1,5 +1,20 @@
-//This is the test class that uses the pages.
-//The tests are written to be indepedently run
+/* This is the test class that tests the following end to end scenarios
+   Tests are written to be independent of each other
+
+   --All inclusive test suite
+    1. Navigating to the All Inclusive pass page
+    2. Redirecting user to the home page when selecting the home link
+    3. Redirect the user to the pricing page after clicking the ‘Buy’ button
+    4. Select one day pass
+    5. Choose for one person and click on the “Checkout” button
+    6. Navigates to Home page from checkout page
+
+   --Explorer pass test suite
+    7. Navigates to ‘Explorer’ page
+    8. Tests all the ‘Explorer’ page links
+    9. Tests you can add an ‘Explorer’ pass to the cart
+   10. Tests that you can remove an ‘Explorer’ pass from the cart
+ */
 
 import { AllInclusivePage } from "./pages/all_inclusive_page"
 import { PricingPage } from "./pages/pricing_page"
