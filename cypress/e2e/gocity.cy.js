@@ -22,6 +22,8 @@ import { ReviewOrderPage } from "./pages/review_order_page"
 import { HomePage } from "./pages/home_page"
 import { ExpPassPage } from "./pages/exp_pass_page"
 
+const url = Cypress.env("url")
+
 
 const allInclusivePage = new AllInclusivePage()
 const pricingPage = new PricingPage()
@@ -33,7 +35,7 @@ const expPage = new ExpPassPage()
 describe('All inclusive package related tests', () => {
 
     beforeEach(() => {
-        cy.visit('https://gocity.com/boston/en-us/products/all-inclusive')
+        cy.visit(url + '/products/all-inclusive')
         Cypress.on('uncaught:exception', (err, runnable) => {
 
             return false
@@ -41,23 +43,21 @@ describe('All inclusive package related tests', () => {
     })
 
     it('Go to all inclusive page', () => {
-        cy.url().should('eq', 'https://gocity.com/boston/en-us/products/all-inclusive')
+        cy.url().should('eq', url + '/products/all-inclusive')
     })
 
     it('Go to home page from all inclusive', () => {
         allInclusivePage.goToHomePage()
-        cy.url().should('eq', 'https://gocity.com/boston/en-us')
+        cy.url().should('eq', url)
     })
 
     it('Go to pricing page by clicking buy button', () => {
-        cy.wait(5000)
         allInclusivePage.clickBuyButton()
-        cy.url().should('eq', 'https://gocity.com/boston/en-us/products/all-inclusive/pricing')
+        cy.url().should('eq', url + '/products/all-inclusive/pricing')
     })
 
     it('Select one day pass', () => {
         allInclusivePage.clickBuyButton()
-        cy.wait(5000)
         pricingPage.selectOneDayPass()
         pricingPage.getCheckOutButton().should('have.text', 'Checkout')
 
@@ -65,24 +65,18 @@ describe('All inclusive package related tests', () => {
 
     it('Checkout one day pass', () => {
         allInclusivePage.clickBuyButton()
-        cy.wait(5000)
         pricingPage.selectOneDayPass()
-        cy.wait(5000)
         pricingPage.checkOutOneDayPass()
-        cy.wait(10000)
         cy.get('.lc-cart__pass-product-name').should('have.text', '1 day pass Adult All-Inclusive ')
 
     })
 
     it('Go to home page from review order page', () => {
         allInclusivePage.clickBuyButton()
-        cy.wait(5000)
         pricingPage.selectOneDayPass()
-        cy.wait(5000)
         pricingPage.checkOutOneDayPass()
-        cy.wait(5000)
         reviewOrderPage.clickGotoHomePageLink()
-        cy.url().should('eq', 'https://gocity.com/boston/en-us')
+        cy.url().should('eq', url)
 
     })
 
@@ -90,7 +84,7 @@ describe('All inclusive package related tests', () => {
 
 describe('Explorer pass related tests', () => {
     beforeEach(() => {
-        cy.visit('https://gocity.com/boston/en-us')
+        cy.visit(url)
         Cypress.on('uncaught:exception', (err, runnable) => {
             return false
         });
@@ -105,7 +99,6 @@ describe('Explorer pass related tests', () => {
     it('Click on all links in explorer page', () => {
         homePage.clickExclusivePassLink()
         expPage.clickReadMoreLink()
-        cy.wait(5000)
         expPage.getExpItemList()
             .its('length')
             .then(n => {
@@ -132,7 +125,7 @@ describe('Explorer pass related tests', () => {
         expPage.deleteItemFromCart()
         cy.wait(2000)
         expPage.getCartIcon().should('not.exist')
-        
+
     })
 
 })
